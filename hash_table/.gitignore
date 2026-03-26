@@ -1,0 +1,27 @@
+# 编译产物
+*.exe
+*.o
+*.obj
+*.pdb
+*.ilk
+*.log
+
+# 构建目录
+build/
+Debug/
+Release/
+x64/
+x86/
+
+# VSCode 配置（可选：如果不想共享 VSCode 配置）
+# .vscode/
+
+# Visual Studio 文件
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# 其他
+*.bak
+*.tmp
