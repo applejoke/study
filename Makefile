@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Wall -g
-INCLUDE = -I include
-SRC_DIR = code
-BUILD_DIR = build
-TARGET = test_hash
+INCLUDE = -I "哈希（链地址法）/include"
+SRC_DIR = "哈希（链地址法）/code"
+BUILD_DIR = "哈希（链地址法）/build"
+TARGET = "哈希（链地址法）/test_hash"
 
 # 源文件
 SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/Hash.c
@@ -23,11 +23,11 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 # 编译 main.c
-$(BUILD_DIR)/main.o: $(SRC_DIR)/main.c include/Hash.h
+$(BUILD_DIR)/main.o: $(SRC_DIR)/main.c "哈希（链地址法）/include/Hash.h"
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 # 编译 Hash.c
-$(BUILD_DIR)/Hash.o: $(SRC_DIR)/Hash.c include/Hash.h
+$(BUILD_DIR)/Hash.o: $(SRC_DIR)/Hash.c "哈希（链地址法）/include/Hash.h"
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 # 运行程序
