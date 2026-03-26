@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/Hash.h"
+#include "Hash.h"
 
 // 测试1: 基本功能测试 - 插入和显示
 void test_basic_insert_and_show() {
@@ -62,16 +62,25 @@ void test_search() {
     printf("\n搜索测试:\n");
     int key1 = 20;
     printf("搜索 %d: ", key1);
-    SearchByKey(&hash, key1);
+    int result1 = SearchByKey(&hash, key1);
+    if (result1 != -1) {
+        printf("找到 %d\n", result1);
+    }
     
     int key2 = 42;
     printf("搜索 %d: ", key2);
-    SearchByKey(&hash, key2);
+    int result2 = SearchByKey(&hash, key2);
+    if (result2 != -1) {
+        printf("找到 %d\n", result2);
+    }
     
     // 测试搜索不存在的元素
     int key3 = 99;
     printf("搜索 %d: ", key3);
-    SearchByKey(&hash, key3);
+    int result3 = SearchByKey(&hash, key3);
+    if (result3 == -1) {
+        printf("未找到\n");
+    }
     
     Destory(&hash);
     printf("测试3通过!\n\n");

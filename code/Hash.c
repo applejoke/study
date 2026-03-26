@@ -2,8 +2,9 @@
 #if 1
 #include <stdio.h>
 #include <stdlib.h>
-#include "Hash.h"
-#define LEN_MAX 10;
+#include <Hash.h>
+
+#define LEN_MAX 10
 //对LinkHash类型的变量属性赋值
 // -> 动态开辟一维数组，每个元素空指针
 void Init(LinkHash* ph) {
@@ -14,15 +15,18 @@ void Init(LinkHash* ph) {
 		return;
 	}
 	for (int i = 0; i < ph->len; i++) {
-		ph->table[i]->data = 0;
-		ph->table[i]->next = NULL;
+		ph->table[i] = NULL;
 	}
 	return;
 }
 
 //哈希函数
 static int Hash(int key, int len) {
-	return key % len;
+	int index = key % len;
+	if (index < 0) {
+		index += len;
+	}
+	return index;
 }
 
 //头插
@@ -52,6 +56,15 @@ void InsertVal(LinkHash* ph, int data) {
 		return;
 	}
 	int index = Hash(data, ph->len);
+	if (ph->table[index] == NULL) {
+		ph->table[index] = (Node*)malloc(sizeof(Node));
+		if (ph->table[index] == NULL) {
+			printf("Error!");
+			return;
+		}
+		ph->table[index]->data = 0;
+		ph->table[index]->next = NULL;
+	}
 	HeadInsert(ph->table[index], data);
 	return;
 }
@@ -66,15 +79,19 @@ int SearchByKey(LinkHash* ph, int key) {
 	}
 	int index = Hash(key, ph->len);
 	Node* p = ph->table[index];
+	if (p == NULL) {
+		printf("搜索失败");
+		return -1;
+	}
 	while (p->next != NULL) {
 		if (p->next->data == key) {
 			return p->next->data;
 		}
 		p = p->next;
 	}
-		printf("搜索失败");
+	printf("搜索失败");
 	return -1;
-}
+;}
 
 void Destory(LinkHash* ph) {
 	if (ph == NULL) {
@@ -83,13 +100,17 @@ void Destory(LinkHash* ph) {
 	}
 	for (int i = 0; i < ph->len; i++) {
 		Node* temp = ph->table[i];
-		while (temp->next != NULL) {
-			Node* p = temp->next;
-			free(temp);
-			temp = p;
+		if (temp != NULL) {
+			while (temp != NULL) {
+				Node* p = temp->next;
+				free(temp);
+				temp = p;
+			}
 		}
 	}
 	free(ph->table);
+	ph->table = NULL;
+	ph = NULL;
 	return;
 }
 
@@ -101,9 +122,11 @@ void Show(LinkHash* ph) {
 	for (int i = 0; i < ph->len; i++) {
 		Node* p = ph->table[i];
 		printf("[%d]: ", i);
-		while (p->next != NULL) {
-			printf("%d ", p->next->data);
-			p = p->next;
+		if (p != NULL) {
+			while (p->next != NULL) {
+				printf("%d ", p->next->data);
+				p = p->next;
+			}
 		}
 		printf("\n");
 	}
