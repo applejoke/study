@@ -2,7 +2,7 @@
 #if 1
 #include <stdio.h>
 #include <stdlib.h>
-#include <Hash.h>
+#include "Hash.h"
 
 #define LEN_MAX 10
 //对LinkHash类型的变量属性赋值

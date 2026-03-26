@@ -1,11 +1,27 @@
-# 编译生成的文件
+# 编译产物
 *.exe
 *.o
 *.obj
-*.out
+*.pdb
+*.ilk
+*.log
 
 # 构建目录
 build/
+Debug/
+Release/
+x64/
+x86/
 
-# IDE 配置文件（可选）
-.vscode/
+# Visual Studio 文件
+.vs/
+*.suo
+*.user
+*.sln.docstates
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# 其他
+*.bak
+*.tmp
