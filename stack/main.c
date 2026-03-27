@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <io.h>
+#include <fcntl.h>
 #include "Stack.h"
 
 void test_basic_operations()
@@ -100,7 +102,6 @@ void test_edge_cases()
 
 int main()
 {
-	
 	printf("=======================================\n");
 	printf("         顺序栈全面测试程序           \n");
 	printf("=======================================\n\n");

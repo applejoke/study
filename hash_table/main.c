@@ -1,6 +1,8 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <io.h>
+#include <fcntl.h>
 #include "Hash.h"
 
 // 测试1: 基本功能测试 - 插入和显示
@@ -218,6 +220,11 @@ void test_create_destroy_cycle() {
 }
 
 int main() {
+<<<<<<< HEAD
+=======
+    // 设置控制台输出为 UTF-8，解决 VS2022 调试时中文乱码问题
+    _setmode(_fileno(stdout), _O_U8TEXT);
+>>>>>>> 721c88e28bac8a6937a70a5fed1f086fc5c1da33
     
     printf("=======================================\n");
     printf("      哈希表(链表法)全面测试程序       \n");
