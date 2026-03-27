@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <io.h>
+#include <fcntl.h>
 #include "Stack.h"
 
 void test_basic_operations()
@@ -100,6 +102,9 @@ void test_edge_cases()
 
 int main()
 {
+	// 设置控制台输出为 UTF-8，解决 VS2022 调试时中文乱码问题
+	_setmode(_fileno(stdout), _O_U8TEXT);
+	
 	printf("=======================================\n");
 	printf("         顺序栈全面测试程序           \n");
 	printf("=======================================\n\n");
