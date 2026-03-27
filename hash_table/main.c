@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include "Hash.h"
@@ -218,6 +218,7 @@ void test_create_destroy_cycle() {
 }
 
 int main() {
+    
     printf("=======================================\n");
     printf("      哈希表(链表法)全面测试程序       \n");
     printf("=======================================\n\n");
